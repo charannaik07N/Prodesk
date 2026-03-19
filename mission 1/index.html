@@ -9,23 +9,37 @@
       type="image/svg+xml"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236366f1'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='28' font-family='Arial, sans-serif' font-weight='700' fill='white'%3EPD%3C/text%3E%3C/svg%3E"
     />
+    <link rel="preload" href="./styles/tailwind.css" as="style" />
+    <link
+      rel="preload"
+      as="image"
+      href="./heroimage-520.avif"
+      imagesrcset="./heroimage-360.avif 360w, ./heroimage-520.avif 520w"
+      imagesizes="(min-width: 768px) 455px, calc(100vw - 3rem)"
+      fetchpriority="high"
+    />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#6366f1",
-            },
-          },
-        },
-      };
-    </script>
+    <link rel="stylesheet" href="./styles/tailwind.css" />
 
     <style>
+      :root {
+        --brand-primary: #4338ca;
+        --brand-primary-hover: #3730a3;
+      }
+
+      .bg-primary {
+        background-color: var(--brand-primary) !important;
+      }
+
+      .text-primary {
+        color: var(--brand-primary) !important;
+      }
+
+      .hover\:bg-primary\/90:hover,
+      .hover\:bg-primary:hover {
+        background-color: var(--brand-primary-hover) !important;
+      }
+
       .glass-nav {
         background: rgba(255, 255, 255, 0.26);
         border-bottom: 1px solid rgba(255, 255, 255, 0.35);
@@ -222,8 +236,14 @@
 
         <div>
           <img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlnaXRhbCUyMGV4cGVyaWVuY2VzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            src="./heroimage-520.avif"
+            srcset="./heroimage-360.avif 360w, ./heroimage-520.avif 520w"
+            sizes="(min-width: 768px) 455px, calc(100vw - 3rem)"
             alt="Team collaborating on digital product strategy"
+            width="520"
+            height="303"
+            decoding="async"
+            fetchpriority="high"
             class="w-full rounded-xl shadow-lg"
           />
         </div>
@@ -374,7 +394,7 @@
       <!-- bottom bar -->
       <div class="border-t border-gray-700">
         <div
-          class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-5 text-xs text-gray-500 sm:flex-row"
+          class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-5 text-xs text-gray-400 sm:flex-row"
         >
           <span>&copy; 2026 Prodesk IT. All rights reserved.</span>
           <div class="flex gap-4">
