@@ -24,11 +24,11 @@ This mission contains a responsive landing page built with HTML and Tailwind CSS
 
 ## Output Images
 
-### Performance Report
+### Live Image Preview
 
 ![Live Server Preview](./outputs/image-1.png)
 
-### Live Image Preview
+### Performance Report
 
 ![Performance Report](./outputs/image-3.png)
 
