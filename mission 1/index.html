@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prodesk IT Navbar</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236366f1'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='28' font-family='Arial, sans-serif' font-weight='700' fill='white'%3EPD%3C/text%3E%3C/svg%3E"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#6366f1",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.26);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(14px) saturate(160%);
+        -webkit-backdrop-filter: blur(14px) saturate(160%);
+      }
+
+      .dark .glass-nav {
+        background: rgba(17, 24, 39, 0.35);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      }
+
+      .theme-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 9999px;
+        border: 1px solid #7dd3fc;
+        background: linear-gradient(120deg, #e0f2fe, #cffafe);
+        color: #0c4a6e;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        padding: 0.42rem 0.8rem;
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          background 180ms ease;
+      }
+
+      .theme-switch:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(8, 145, 178, 0.18);
+      }
+
+      .theme-switch .theme-dot {
+        width: 0.65rem;
+        height: 0.65rem;
+        border-radius: 9999px;
+        background: #0284c7;
+        box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.18);
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .theme-switch[data-mode="dark"] {
+        border-color: #818cf8;
+        background: linear-gradient(
+          120deg,
+          rgba(67, 56, 202, 0.28),
+          rgba(15, 23, 42, 0.95)
+        );
+        color: #e0e7ff;
+      }
+
+      .theme-switch[data-mode="dark"] .theme-dot {
+        background: #c7d2fe;
+        box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.22);
+        transform: scale(1.08);
+      }
+
+      .service-card {
+        transition:
+          transform 220ms ease,
+          box-shadow 220ms ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 dark:bg-gray-900 transition duration-300">
+    <header>
+      <nav
+        class="glass-nav fixed top-0 left-0 z-50 w-full shadow-md transition-all duration-300"
+        aria-label="Primary navigation"
+      >
+        <div
+          class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4"
+        >
+          <a href="#" class="flex items-center gap-3">
+            <span
+              class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-sm font-bold text-white shadow-md"
+            >
+              PD
+            </span>
+            <span class="text-2xl font-bold text-primary">Prodesk IT</span>
+          </a>
+
+          <div class="hidden items-center space-x-8 md:flex">
+            <a href="#" class="group relative text-gray-800 dark:text-gray-200">
+              Home
+              <span
+                class="absolute left-0 -bottom-1 h-[2px] w-0 bg-primary transition-all group-hover:w-full"
+              ></span>
+            </a>
+            <a href="#" class="group relative text-gray-800 dark:text-gray-200">
+              About
+              <span
+                class="absolute left-0 -bottom-1 h-[2px] w-0 bg-primary transition-all group-hover:w-full"
+              ></span>
+            </a>
+            <a href="#" class="group relative text-gray-800 dark:text-gray-200">
+              Services
+              <span
+                class="absolute left-0 -bottom-1 h-[2px] w-0 bg-primary transition-all group-hover:w-full"
+              ></span>
+            </a>
+            <a href="#" class="group relative text-gray-800 dark:text-gray-200">
+              Contact
+              <span
+                class="absolute left-0 -bottom-1 h-[2px] w-0 bg-primary transition-all group-hover:w-full"
+              ></span>
+            </a>
+
+            <button
+              id="theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="theme-switch"
+              data-mode="light"
+            >
+              <span class="theme-dot" aria-hidden="true"></span>
+              <span class="theme-label">LIGHT</span>
+            </button>
+          </div>
+
+          <div class="flex items-center space-x-3 md:hidden">
+            <button
+              id="theme-toggle-mobile"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="theme-switch"
+              data-mode="light"
+            >
+              <span class="theme-dot" aria-hidden="true"></span>
+              <span class="theme-label">LIGHT</span>
+            </button>
+
+            <button
+              id="menu-btn"
+              type="button"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+              aria-label="Open menu"
+              class="rounded px-2 py-1 text-2xl text-gray-800 transition hover:bg-gray-200/60 dark:text-gray-200 dark:hover:bg-gray-700/60"
+            >
+              =
+            </button>
+          </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden px-6 pb-4 md:hidden">
+          <a href="#" class="block py-2 text-gray-800 dark:text-gray-200"
+            >Home</a
+          >
+          <a href="#" class="block py-2 text-gray-800 dark:text-gray-200"
+            >About</a
+          >
+          <a href="#" class="block py-2 text-gray-800 dark:text-gray-200"
+            >Services</a
+          >
+          <a href="#" class="block py-2 text-gray-800 dark:text-gray-200"
+            >Contact</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <!-- hero section -->
+    <main class="pt-20">
+      <section
+        class="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-10 px-6 py-12 text-gray-800 dark:text-gray-200 md:grid-cols-2"
+      >
+        <div class="text-left">
+          <h1 class="text-4xl font-bold leading-tight md:text-5xl">
+            We build digital experiences that drive results
+          </h1>
+          <p class="mt-4 max-w-xl text-lg text-gray-700 dark:text-gray-300">
+            We design and develop modern, high-performance web solutions that
+            help your business grow faster and connect better with customers.
+          </p>
+          <button
+            class="mt-6 rounded bg-primary px-6 py-3 font-medium text-white transition hover:bg-primary/90"
+          >
+            Get Started
+          </button>
+        </div>
+
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlnaXRhbCUyMGV4cGVyaWVuY2VzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            alt="Team collaborating on digital product strategy"
+            class="w-full rounded-xl shadow-lg"
+          />
+        </div>
+      </section>
+
+      <!-- services section -->
+      <section class="bg-gray-50 dark:bg-gray-800 py-12">
+        <div
+          class="mx-auto max-w-7xl px-6 text-center text-gray-800 dark:text-gray-200"
+        >
+          <h2 class="text-3xl font-bold">Our Services</h2>
+          <p
+            class="mt-4 max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300"
+          >
+            We offer a wide range of services to help your business succeed in
+            the digital world.
+          </p>
+
+          <div class="mt-10 grid gap-8 md:grid-cols-3">
+            <div
+              class="service-card rounded-lg border bg-white p-6 text-left dark:bg-gray-900"
+            >
+              <h3 class="text-xl font-semibold">Web Development</h3>
+              <p class="mt-2 text-gray-700 dark:text-gray-300">
+                Custom websites and web applications built with the latest
+                technologies.
+              </p>
+            </div>
+
+            <div
+              class="service-card rounded-lg border bg-white p-6 text-left dark:bg-gray-900"
+            >
+              <h3 class="text-xl font-semibold">UI/UX Design</h3>
+              <p class="mt-2 text-gray-700 dark:text-gray-300">
+                User-centered design solutions that create engaging digital
+                experiences.
+              </p>
+            </div>
+
+            <div
+              class="service-card rounded-lg border bg-white p-6 text-left dark:bg-gray-900"
+            >
+              <h3 class="text-xl font-semibold">Digital Marketing</h3>
+              <p class="mt-2 text-gray-700 dark:text-gray-300">
+                Strategies to boost your online presence and connect with your
+                audience.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- footer -->
+    <footer class="bg-gray-900 text-gray-300">
+      <div
+        class="mx-auto max-w-7xl px-6 py-14 grid gap-10 sm:grid-cols-2 md:grid-cols-4"
+      >
+        <div>
+          <div class="flex items-center gap-3">
+            <span
+              class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-sm font-bold text-white shadow-md"
+            >
+              PD
+            </span>
+            <span class="text-xl font-bold text-white">Prodesk IT</span>
+          </div>
+          <p class="mt-3 text-sm leading-relaxed text-gray-400">
+            Building modern digital experiences that help businesses grow faster
+            and connect better with their customers.
+          </p>
+        </div>
+
+        <div>
+          <h4
+            class="text-sm font-semibold uppercase tracking-widest text-white"
+          >
+            Quick Links
+          </h4>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a href="#" class="transition hover:text-white">Home</a></li>
+            <li><a href="#" class="transition hover:text-white">About</a></li>
+            <li>
+              <a href="#" class="transition hover:text-white">Services</a>
+            </li>
+            <li><a href="#" class="transition hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4
+            class="text-sm font-semibold uppercase tracking-widest text-white"
+          >
+            Services
+          </h4>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>
+              <a href="#" class="transition hover:text-white"
+                >Web Development</a
+              >
+            </li>
+            <li>
+              <a href="#" class="transition hover:text-white">UI/UX Design</a>
+            </li>
+            <li>
+              <a href="#" class="transition hover:text-white"
+                >Digital Marketing</a
+              >
+            </li>
+            <li>
+              <a href="#" class="transition hover:text-white">IT Consulting</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4
+            class="text-sm font-semibold uppercase tracking-widest text-white"
+          >
+            Connect
+          </h4>
+          <p class="mt-4 text-sm text-gray-400">Prodesk IT</p>
+          <p class="text-sm text-gray-400">+91 0123456789</p>
+          <div class="mt-4 flex gap-3">
+            <a
+              href="#"
+              aria-label="Facebook"
+              class="rounded-lg bg-gray-800 px-3 py-1.5 text-xs font-medium transition hover:bg-primary hover:text-white"
+            >
+              Facebook
+            </a>
+            <a
+              href="#"
+              aria-label="Twitter / X"
+              class="rounded-lg bg-gray-800 px-3 py-1.5 text-xs font-medium transition hover:bg-primary hover:text-white"
+            >
+              X
+            </a>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="rounded-lg bg-gray-800 px-3 py-1.5 text-xs font-medium transition hover:bg-primary hover:text-white"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- bottom bar -->
+      <div class="border-t border-gray-700">
+        <div
+          class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-5 text-xs text-gray-500 sm:flex-row"
+        >
+          <span>&copy; 2026 Prodesk IT. All rights reserved.</span>
+          <div class="flex gap-4">
+            <a href="#" class="transition hover:text-white">Privacy Policy</a>
+            <a href="#" class="transition hover:text-white">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const root = document.documentElement;
+      const themeToggleButtons = document.querySelectorAll(
+        "#theme-toggle, #theme-toggle-mobile",
+      );
+      const menuButton = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const storedTheme = localStorage.getItem("theme");
+
+      if (storedTheme === "dark") {
+        root.classList.add("dark");
+      }
+
+      function syncThemeButtons() {
+        const usingDarkTheme = root.classList.contains("dark");
+        themeToggleButtons.forEach((button) => {
+          const label = button.querySelector(".theme-label");
+          button.dataset.mode = usingDarkTheme ? "dark" : "light";
+          button.setAttribute(
+            "aria-label",
+            usingDarkTheme ? "Switch to light mode" : "Switch to dark mode",
+          );
+
+          if (label) {
+            label.textContent = usingDarkTheme ? "DARK" : "LIGHT";
+          }
+        });
+      }
+
+      function toggleTheme() {
+        root.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          root.classList.contains("dark") ? "dark" : "light",
+        );
+        syncThemeButtons();
+      }
+
+      themeToggleButtons.forEach((button) => {
+        button.addEventListener("click", toggleTheme);
+      });
+
+      menuButton.addEventListener("click", () => {
+        const isHidden = mobileMenu.classList.toggle("hidden");
+        menuButton.setAttribute("aria-expanded", String(!isHidden));
+        menuButton.setAttribute(
+          "aria-label",
+          isHidden ? "Open menu" : "Close menu",
+        );
+        menuButton.textContent = isHidden ? "=" : "X";
+      });
+
+      syncThemeButtons();
+    </script>
+  </body>
+</html>
