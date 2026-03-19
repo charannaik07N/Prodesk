@@ -24,18 +24,14 @@ This mission contains a responsive landing page built with HTML and Tailwind CSS
 
 ## Output Images
 
-### Homepage (Light Mode)
+### Live Server Preview
 
-![Homepage Light Mode](![alt text](image.png))
+![Live Server Preview](./image.png)
 
-### Homepage (Dark Mode)
+### Performance Report
 
-![Homepage Dark Mode](./outputs/homepage-dark.svg)
+![Performance Report](./image-1.png)
 
-### Footer View
+## Live Link
 
-![Footer View](./outputs/footer-view.svg)
-
-## Note
-
-The images in `outputs/` are placeholders for now. Replace them with actual screenshots of your final UI when ready.
+https://prodesk-dsag.vercel.app/
