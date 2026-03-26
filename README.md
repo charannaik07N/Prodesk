@@ -55,7 +55,7 @@ Mission 2 is a finance dashboard to manage salary and expenses, convert currency
 
 ### Mission 2 Live Demo
 
-- Add your deployed Mission 2 link here
+- https://prodesk-mission2.vercel.app/)
 
 ## Project Structure
 
