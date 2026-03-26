@@ -89,14 +89,11 @@ Output filename:
 - PDF not downloading:
   - Confirm jsPDF CDN script is loaded.
 
-## Future Improvements
+## output images
 
-- Add edit expense feature.
-- Add multiple currency options.
-- Add monthly/weekly grouping.
-- Add category-wise reports.
-- Add input validation messages in UI.
+ <img width="1851" height="655" alt="image" src="https://github.com/user-attachments/assets/fc04bf22-bfde-47f5-ae9f-ff310c92ea4e" />
 
+  
 ## Author
 
 Mission 2 project implementation.
