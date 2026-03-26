@@ -93,7 +93,10 @@ Output filename:
 
  <img width="1851" height="655" alt="image" src="https://github.com/user-attachments/assets/fc04bf22-bfde-47f5-ae9f-ff310c92ea4e" />
 
+  <img width="1525" height="840" alt="image" src="https://github.com/user-attachments/assets/df185e8d-19e1-47af-9275-ee8a46c3505e" />
+
   
+
 ## Author
 
 Mission 2 project implementation.
