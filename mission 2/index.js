@@ -14,8 +14,10 @@ const alertMessage = document.getElementById("alertMessage");
 let salary = 0;
 let expenses = [];
 let inrToUsdRate = null;
+let usdToInrRate = null;
 let expenseChart = null;
 const FALLBACK_INR_TO_USD_RATE = 0.011;
+const FALLBACK_USD_TO_INR_RATE = 1 / FALLBACK_INR_TO_USD_RATE;
 const STORAGE_KEY = "cashFlowDashboardState";
 
 function saveStateToLocalStorage() {
@@ -64,16 +66,16 @@ function getRemainingBalanceInr() {
   return salary - getTotalExpenses();
 }
 
-async function fetchInrToUsdRate() {
+async function fetchExchangeRate(fromCurrency, toCurrency) {
   const response = await fetch(
-    "https://api.frankfurter.app/latest?from=INR&to=USD",
+    `https://api.frankfurter.app/latest?from=${fromCurrency}&to=${toCurrency}`,
   );
   if (!response.ok) {
     throw new Error("Failed to fetch exchange rate");
   }
 
   const data = await response.json();
-  const rate = Number(data?.rates?.USD);
+  const rate = Number(data?.rates?.[toCurrency]);
   if (!Number.isFinite(rate) || rate <= 0) {
     throw new Error("Invalid exchange rate");
   }
@@ -87,12 +89,35 @@ async function ensureInrToUsdRate() {
   }
 
   try {
-    inrToUsdRate = await fetchInrToUsdRate();
+    inrToUsdRate = await fetchExchangeRate("INR", "USD");
+    usdToInrRate = 1 / inrToUsdRate;
   } catch {
     inrToUsdRate = FALLBACK_INR_TO_USD_RATE;
+    usdToInrRate = FALLBACK_USD_TO_INR_RATE;
   }
 
   return inrToUsdRate;
+}
+
+async function ensureUsdToInrRate() {
+  if (usdToInrRate) {
+    return usdToInrRate;
+  }
+
+  if (inrToUsdRate) {
+    usdToInrRate = 1 / inrToUsdRate;
+    return usdToInrRate;
+  }
+
+  try {
+    usdToInrRate = await fetchExchangeRate("USD", "INR");
+    inrToUsdRate = 1 / usdToInrRate;
+  } catch {
+    usdToInrRate = FALLBACK_USD_TO_INR_RATE;
+    inrToUsdRate = FALLBACK_INR_TO_USD_RATE;
+  }
+
+  return usdToInrRate;
 }
 
 function convertFromInr(amountInr, currencyCode) {
@@ -101,6 +126,14 @@ function convertFromInr(amountInr, currencyCode) {
   }
 
   return amountInr;
+}
+
+function convertToInr(amount, currencyCode) {
+  if (currencyCode === "USD") {
+    return amount * (usdToInrRate || FALLBACK_USD_TO_INR_RATE);
+  }
+
+  return amount;
 }
 
 function formatAmountBySelectedCurrency(amountInr) {
@@ -152,16 +185,30 @@ function updateSalaryDisplay() {
   salaryDisplay.textContent = formatAmountBySelectedCurrency(salary);
 }
 // handles the salary input and updates the display and balance
-setSalaryBtn.addEventListener("click", function () {
-  salary = parseFloat(salaryInput.value) || 0;
+setSalaryBtn.addEventListener("click", async function () {
+  const selectedCurrency = currencySelector.value;
+  const enteredSalary = parseFloat(salaryInput.value) || 0;
+
+  if (selectedCurrency === "USD") {
+    await ensureUsdToInrRate();
+  }
+
+  salary = convertToInr(enteredSalary, selectedCurrency);
   saveStateToLocalStorage();
   updateSalaryDisplay();
   updateBalance();
 });
 // handles adding a new expense, updates the list and balance
-addExpenseBtn.addEventListener("click", function () {
+addExpenseBtn.addEventListener("click", async function () {
   const name = expenseName.value.trim();
-  const amount = parseFloat(expenseAmount.value) || 0;
+  const enteredAmount = parseFloat(expenseAmount.value) || 0;
+  const selectedCurrency = currencySelector.value;
+
+  if (selectedCurrency === "USD") {
+    await ensureUsdToInrRate();
+  }
+
+  const amount = convertToInr(enteredAmount, selectedCurrency);
 
   if (name && amount > 0) {
     const expense = {
@@ -197,8 +244,14 @@ function initializeChart() {
     expenseChart.destroy();
   }
 
+  const selectedCurrency = currencySelector.value;
   const totalExpenses = getTotalExpenses();
   const remainingBalanceInr = getRemainingBalanceInr();
+  const remainingDisplayAmount = Math.max(
+    0,
+    convertFromInr(remainingBalanceInr, selectedCurrency),
+  );
+  const expensesDisplayAmount = convertFromInr(totalExpenses, selectedCurrency);
 
   const ctx = expenseChartCanvas.getContext("2d");
   expenseChart = new Chart(ctx, {
@@ -207,7 +260,7 @@ function initializeChart() {
       labels: ["Remaining Balance", "Total Expenses"],
       datasets: [
         {
-          data: [Math.max(0, remainingBalanceInr), totalExpenses],
+          data: [remainingDisplayAmount, expensesDisplayAmount],
           backgroundColor: ["#00d084", "#ff6b6b"],
           borderColor: ["#00d084", "#ff6b6b"],
           borderWidth: 2,
@@ -226,6 +279,15 @@ function initializeChart() {
               family: "Sora",
             },
             padding: 15,
+          },
+        },
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              const label = context.label || "";
+              const value = Number(context.parsed) || 0;
+              return `${label}: ${formatCurrency(value, selectedCurrency)}`;
+            },
           },
         },
       },
@@ -426,7 +488,16 @@ async function updateBalance() {
 
 downloadPDFBtn.addEventListener("click", downloadReportAsPdf);
 
-loadStateFromLocalStorage();
-updateSalaryDisplay();
-renderExpenseList();
-updateBalance();
+async function initializeApp() {
+  loadStateFromLocalStorage();
+
+  if (currencySelector.value === "USD") {
+    await ensureInrToUsdRate();
+  }
+
+  updateSalaryDisplay();
+  renderExpenseList();
+  updateBalance();
+}
+
+initializeApp();

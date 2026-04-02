@@ -57,6 +57,30 @@ Mission 2 is a finance dashboard to manage salary and expenses, convert currency
 
 - https://prodesk-mission2.vercel.app/)
 
+## Mission 3 - Dev-Detective: GitHub User Search
+
+Mission 3 is a GitHub user search project that lets you hunt and inspect GitHub profiles, display detailed user information, and includes a battle mode for comparing developers.
+
+### Highlights
+
+- Fetches GitHub user data from the public API
+- Displays profile details: name, bio, followers, repository count, and links
+- Loading spinner during API requests
+- Error state handling for user not found
+- Battle mode logic for comparing users
+- Clean dashboard-style layout
+
+### Tech Stack
+
+- HTML5
+- Vanilla JavaScript (ES6)
+- CSS3
+- GitHub REST API
+
+### Mission 3 Live Demo
+
+- https://prodesk-fyr8.vercel.app/
+
 ## Project Structure
 
 - mission 1: Landing page project files
