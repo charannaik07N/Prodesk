@@ -8,6 +8,18 @@
   animation: spin 1s ease infinite;
 }
 
+.not-found-card {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffffff 70%);
+  border: 1px solid #fb923c;
+  box-shadow: 0 16px 42px rgba(249, 115, 22, 0.12);
+}
+
+.not-found-card #name-1,
+.not-found-card #name-2,
+.not-found-card #name-3 {
+  color: #9a3412;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

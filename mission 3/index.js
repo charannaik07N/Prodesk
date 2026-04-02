@@ -1,4 +1,5 @@
 const searchInput = document.getElementById("search-input");
+const searchForm = document.getElementById("search-form");
 const battleModeToggle = document.getElementById("battle-mode-toggle");
 const searchSection = document.getElementById("search-section");
 const battleSection = document.getElementById("battle-section");
@@ -7,6 +8,16 @@ const battleInput2 = document.getElementById("battle-input-2");
 const battleButton = document.getElementById("battle-button");
 const card1 = document.getElementById("profile-card-3");
 const card2 = document.getElementById("profile-card-2");
+
+const getNotFoundAvatar = () =>
+  `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+      <rect width="160" height="160" rx="32" fill="#FFF7ED" />
+      <circle cx="80" cy="72" r="34" fill="#FDBA74" />
+      <path d="M54 112c7-16 20-24 26-24s19 8 26 24" stroke="#9A3412" stroke-width="10" stroke-linecap="round" />
+      <path d="M64 68h0.01M96 68h0.01" stroke="#9A3412" stroke-width="10" stroke-linecap="round" />
+    </svg>
+  `)}`;
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -44,12 +55,14 @@ const fetchTotalStars = async (reposUrl, publicRepos = 0) => {
   return totalStars;
 };
 
-const renderRepositories = (repos, userIndex) => {
+const renderRepositories = (repos, userIndex, options = {}) => {
+  const { emptyMessage = "No repositories found." } = options;
   const repoList = document.getElementById(`repo-list-${userIndex}`);
   const repoEmpty = document.getElementById(`repo-empty-${userIndex}`);
   repoList.innerHTML = ""; // Clear previous repos
 
   if (!repos || !repos.length) {
+    repoEmpty.textContent = emptyMessage;
     repoEmpty.classList.remove("hidden");
     return;
   }
@@ -68,6 +81,8 @@ const renderRepositories = (repos, userIndex) => {
 
 const renderUser = (data, userIndex, options = {}) => {
   const { includeStars = false } = options;
+  const card = document.getElementById(`profile-card-${userIndex}`);
+  card.classList.remove("not-found-card");
   document.getElementById(`name-${userIndex}`).textContent =
     data.name || "No Name";
   document.getElementById(`title-${userIndex}`).textContent =
@@ -121,6 +136,10 @@ const renderUser = (data, userIndex, options = {}) => {
 };
 
 const resetUserCard = (userIndex) => {
+  document
+    .getElementById(`profile-card-${userIndex}`)
+    .classList.remove("not-found-card");
+  document.getElementById(`name-${userIndex}`).textContent = "";
   document.getElementById(`title-${userIndex}`).textContent = "";
   document.getElementById(`join-date-${userIndex}`).textContent = "";
   document.getElementById(`portfolio-url-${userIndex}`).textContent = "";
@@ -144,13 +163,23 @@ const fetchUser = (username, userIndex, options = {}) => {
     })
     .then((data) => renderUser(data, userIndex, { includeStars }))
     .catch((error) => {
-      document.getElementById(`name-${userIndex}`).textContent =
-        "User Not Found";
+      const card = document.getElementById(`profile-card-${userIndex}`);
+      card.classList.add("not-found-card");
+      document.getElementById(`name-${userIndex}`).textContent = "Signal lost";
       document.getElementById(`title-${userIndex}`).textContent =
-        "Please try another username.";
+        `No GitHub profile matched “${username}”.`;
+      document.getElementById(`join-date-${userIndex}`).textContent =
+        "Try a different handle or trim any extra spaces.";
+      document.getElementById(`portfolio-url-${userIndex}`).textContent =
+        "Search hint: GitHub usernames must exist exactly as entered.";
+      document.getElementById(`followers-${userIndex}`).textContent =
+        "Status: not found";
       document.getElementById(`profile-picture-${userIndex}`).src =
-        "https://via.placeholder.com/80";
-      renderRepositories([], userIndex);
+        getNotFoundAvatar();
+      renderRepositories([], userIndex, {
+        emptyMessage:
+          "No match yet. Use another username to re-lock the signal.",
+      });
       if (throwOnError) {
         throw error;
       }
@@ -171,12 +200,11 @@ battleModeToggle.addEventListener("change", () => {
   }
 });
 
-searchInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    const username = searchInput.value.trim();
-    if (username !== "") {
-      fetchUser(username, 1);
-    }
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const username = searchInput.value.trim();
+  if (username !== "") {
+    fetchUser(username, 1);
   }
 });
 
