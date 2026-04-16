@@ -2,6 +2,10 @@
 
 Mission 5 is a React task board application built with Vite, Tailwind CSS, and dnd-kit. It lets you create tasks, assign priorities, search through tasks, drag cards between columns, and edit or delete items inline. Task data is saved in the browser with localStorage, so your board stays after refresh.
 
+## Live Demo
+
+https://mission5.vercel.app/
+
 ## Features
 
 - Create tasks with a title and priority.

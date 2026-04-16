@@ -15,7 +15,7 @@ const STORAGE_KEY = "mission5.tasks";
 
 const priorityClassByValue = {
   High: "border-red-500",
-  Medium: "border-yellow-400",
+  Medium: "border-yellow-400",       
   Low: "border-green-500",
 };
 
@@ -177,13 +177,13 @@ function App() {
   };
 
   return (
-    <main className="max-w-8xl mx-auto px-6 py-8 min-h-screen bg-gradient-to-b from-blue-50 to-slate-50">
+    <main className="min-h-screen px-6 py-8 mx-auto max-w-8xl bg-gradient-to-b from-blue-50 to-slate-50">
       <header>
-        <h1 className="text-4xl font-bold m-0 mb-4">Mission 5 Task Board</h1>
+        <h1 className="m-0 mb-4 text-4xl font-bold">Mission 5 Task Board</h1>
 
         <div className="grid grid-cols-1 gap-3">
           <input
-            className="border border-gray-300 rounded-lg bg-white text-slate-900 px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 focus-visible:border-blue-600"
+            className="px-3 py-2 text-sm bg-white border border-gray-300 rounded-lg text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 focus-visible:border-blue-600"
             type="text"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
@@ -191,11 +191,11 @@ function App() {
           />
 
           <form
-            className="grid grid-cols-1 sm:grid-cols-3 gap-2"
+            className="grid grid-cols-1 gap-2 sm:grid-cols-3"
             onSubmit={addTask}
           >
             <input
-              className="border border-gray-300 rounded-lg bg-white text-slate-900 px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 focus-visible:border-blue-600"
+              className="px-3 py-2 text-sm bg-white border border-gray-300 rounded-lg text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 focus-visible:border-blue-600"
               type="text"
               value={newTaskText}
               onChange={(event) => setNewTaskText(event.target.value)}
@@ -203,7 +203,7 @@ function App() {
             />
 
             <select
-              className="border border-gray-300 rounded-lg bg-white text-slate-900 px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 focus-visible:border-blue-600"
+              className="px-3 py-2 text-sm bg-white border border-gray-300 rounded-lg text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 focus-visible:border-blue-600"
               value={newTaskPriority}
               onChange={(event) => setNewTaskPriority(event.target.value)}
             >
@@ -216,7 +216,7 @@ function App() {
 
             <button
               type="submit"
-              className="border-0 rounded-lg bg-blue-600 text-white cursor-pointer px-3 py-2 font-semibold hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              className="px-3 py-2 font-semibold text-white bg-blue-600 border-0 rounded-lg cursor-pointer hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
               Add
             </button>
@@ -225,7 +225,7 @@ function App() {
       </header>
 
       <DndContext sensors={sensors} onDragEnd={onDragEnd}>
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+        <section className="grid grid-cols-1 gap-4 mt-6 md:grid-cols-2 lg:grid-cols-3">
           <Todo
             tasks={filteredTasks.filter((task) => task.status === "todo")}
             onDelete={deleteTask}
