@@ -1,5 +1,7 @@
 # Prodesk Internship Missions
 
+Professional repository documentation for all internship missions completed at Prodesk IT.
+
 ## Intern Profile
 
 - Name: Charan Nayak
@@ -8,167 +10,184 @@
 
 ## Repository Overview
 
-This repository contains internship missions completed at Prodesk IT. Each mission focuses on a different frontend or full-stack capability, from responsive UI and API integration to authentication-style flows and protected routes.
+This repository contains six mission-based projects. The work spans static responsive pages, dashboard-style JavaScript applications, API-driven UI, full-stack AI workflows, drag-and-drop state management, and a modern React e-commerce frontend.
 
-## Missions Summary
+## Mission Index
+
+| Mission   | Project                   | Core Focus                                           | Stack                                                         | Live Link                            |
+| --------- | ------------------------- | ---------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------ |
+| Mission 1 | Prodesk Landing Page      | Responsive marketing landing page                    | HTML5, Tailwind CSS, Node.js                                  | https://prodesk-dsag.vercel.app/     |
+| Mission 2 | Cash Flow Dashboard       | Personal finance tracking and reporting              | HTML5, JavaScript, Tailwind CSS, Chart.js, jsPDF              | https://prodesk-mission2.vercel.app/ |
+| Mission 3 | Dev-Detective             | GitHub profile search and comparison logic           | HTML5, JavaScript, CSS3, GitHub REST API                      | https://prodesk-fyr8.vercel.app/     |
+| Mission 4 | AI Cover Letter Generator | Resume-aware AI cover letter generation              | React, Vite, Node.js, Express, Gemini API, MongoDB (optional) | Not deployed in this repository      |
+| Mission 5 | Task Board                | Kanban-style task workflow with drag-and-drop        | React, Vite, Tailwind CSS, dnd-kit                            | https://mission5.vercel.app/         |
+| Mission 6 | ShopZone                  | E-commerce browsing, cart, login, protected checkout | React 19, React Router, Context API, Vite, Tailwind CSS       | https://shopzone-kappa.vercel.app/   |
+
+## Detailed Project Documentation
 
 ### Mission 1 - Prodesk Landing Page
 
-- Focus: responsive landing page using Tailwind build pipeline.
-- Stack: HTML5, Tailwind CSS, Node.js.
-- Demo: https://prodesk-dsag.vercel.app/
+Mission 1 delivers a responsive landing page implementation using Tailwind CSS through an npm build workflow.
+
+Key features:
+
+- Responsive hero and section layout.
+- Tailwind utility-driven styling.
+- Build pipeline for generated CSS output.
+
+Directory: mission 1
+
+Live: https://prodesk-dsag.vercel.app/
 
 ### Mission 2 - Cash Flow Dashboard
 
-- Focus: personal finance tracking with analytics and export.
-- Stack: HTML5, JavaScript, Tailwind CSS, Chart.js, jsPDF.
-- Demo: https://prodesk-mission2.vercel.app/
+Mission 2 is a browser-based finance dashboard for salary and expense management.
 
-### Mission 3 - Dev-Detective (GitHub User Search)
+Key features:
 
-- Focus: GitHub profile lookup and comparison mode.
-- Stack: HTML5, JavaScript, CSS3, GitHub REST API.
-- Demo: https://prodesk-fyr8.vercel.app/
+- Salary and expense tracking.
+- Remaining balance computation.
+- INR/USD currency toggle.
+- Live exchange-rate fetch with fallback.
+- Expense pie chart visualization.
+- PDF report generation.
+- localStorage persistence.
+
+Directory: mission 2
+
+Live: https://prodesk-mission2.vercel.app/
+
+### Mission 3 - Dev-Detective
+
+Mission 3 is a GitHub user search utility focused on API integration and robust loading/error behavior.
+
+Key features:
+
+- GitHub user profile search.
+- API-driven profile rendering.
+- Loading state and not-found handling.
+- Battle mode support for user comparison flow.
+
+Directory: mission 3
+
+Live: https://prodesk-fyr8.vercel.app/
 
 ### Mission 4 - AI Cover Letter Generator
 
-- Focus: full-stack AI app with resume parsing and letter generation.
-- Stack: React + Vite frontend, Express backend, Gemini API, optional MongoDB.
+Mission 4 is a full-stack application that generates personalized cover letters from user inputs and an uploaded resume PDF.
 
-### Mission 5 - Task Management Board
+Key features:
 
-- Focus: drag-and-drop style board with task status columns and reusable UI components.
-- Stack: React + Vite.
+- React frontend with structured form UX.
+- Express backend with file upload validation.
+- Resume PDF text extraction using server-side parsing.
+- Gemini-powered content generation.
+- Tone controls and ATS optimization mode.
+- Optional generation history with MongoDB.
 
-### Mission 6 - ShopZone (E-Commerce Frontend)
+Directory: mission 4
 
-- Focus: product listing, details, cart, login flow, and protected checkout.
-- Stack: React 19, React Router, Context API, Vite, Tailwind CSS, Lucide Icons.
-- Live Demo: https://shopzone-kappa.vercel.app/
+Live: Not deployed in this repository.
 
-## Mission 6 Complete Project Explanation
+### Mission 5 - Task Board
 
-### Goal
+Mission 5 is a task management board with stateful column workflows and drag-and-drop interactions.
 
-Mission 6 builds a modern e-commerce frontend called ShopZone where users can:
+Key features:
 
-- Browse products fetched from DummyJSON API.
-- Filter products by category.
-- View complete product details with multiple images.
-- Add items to cart and update quantities.
-- Sign in (or continue as guest).
-- Access checkout through a protected route.
+- To Do, In Progress, and Done workflow columns.
+- Create, edit, and delete task actions.
+- Drag-and-drop card movement.
+- Search/filter capability.
+- localStorage persistence.
 
-### Core Architecture
+Directory: Mission-5
 
-- Routing layer in App.jsx using React Router.
-- Global state layer in context/AppContext.jsx.
-- UI split into reusable components under src/components.
-- Browser persistence via localStorage for user and cart data.
+Live: https://mission5.vercel.app/
 
-### Data and State Flow
+### Mission 6 - ShopZone
 
-1. Product list page fetches from https://dummyjson.com/products.
-2. Product details page fetches from https://dummyjson.com/products/:id.
-3. Cart actions are handled centrally through AppContext methods.
-4. Cart and user are persisted with localStorage keys:
-   - shopzone_user
-   - shopzone_cart
-5. Checkout route is guarded by ProtectedRoute and redirects unauthenticated users to login.
+Mission 6 is a production-style e-commerce frontend demonstrating route-level architecture and centralized state.
 
-### Main Routes
+Key features:
 
-- / -> Products page
-- /product/:id -> Product details page
-- /login -> Login/guest access page
-- /checkout -> Protected checkout page
+- Product listing from DummyJSON API.
+- Category filtering and product detail pages.
+- Cart management with quantity controls.
+- Login/guest authentication flow.
+- Protected checkout route.
+- localStorage persistence for user and cart.
 
-### Mission 6 Feature Highlights
+Directory: mission-6/ShopZone
 
-- Product grid with category filter and rating visualization.
-- Dedicated product detail screen with gallery and stock metadata.
-- Cart drawer in navbar with quantity controls.
-- Login simulation flow with guest mode.
-- Checkout form with summary, tax, shipping logic, and order confirmation state.
-- Responsive layout and animated interactions across pages.
+Live: https://shopzone-kappa.vercel.app/
 
-### Mission 6 Folder Structure
+## Repository Structure
 
 ```text
-mission-6/
-   ShopZone/
-      public/
-      src/
-         components/
-            Checkout.jsx
-            Loginpage.jsx
-            Navbar.jsx
-            ProductDetails.jsx
-            Products.jsx
-            ProtectedRoute.jsx
-         context/
-            AppContext.jsx
-         App.jsx
-         App.css
-         index.css
-         main.jsx
-      index.html
-      package.json
-      vite.config.js
-      vercel.json
+prodesk/
+  mission 1/
+  mission 2/
+  mission 3/
+  mission 4/
+    backend/
+    frontend/
+  Mission-5/
+  mission-6/
+    ShopZone/
+  scripts/
 ```
 
-## Complete Setup Guide
+## Complete Setup Instructions
 
 ### Prerequisites
 
-- Node.js 18+ (recommended latest LTS)
+- Node.js 18+
 - npm 9+
+- Git
 
-### 1) Clone and open project
+### 1. Clone Repository
 
 ```bash
 git clone https://github.com/charannaik07N/Prodesk.git
 cd prodesk
 ```
 
-### 2) Root setup (Mission 1 CSS build tooling)
+### 2. Install Root Dependencies
 
 ```bash
 npm install
+```
+
+Root scripts currently support Tailwind CSS build for Mission 1.
+
+### 3. Run Mission 1
+
+```bash
 npm run build:css
 ```
 
-### 3) Mission-wise local run
+Open mission 1/index.html in your browser.
 
-Mission 1
+### 4. Run Mission 2
 
-```bash
-# from repository root
-npm run build:css
-# then open mission 1/index.html in browser
-```
+Open mission 2/index.html in your browser.
 
-Mission 2
+### 5. Run Mission 3
 
-```bash
-# open mission 2/index.html directly in browser
-```
+Open mission 3/index.html in your browser.
 
-Mission 3
+### 6. Run Mission 4 (Full Stack)
 
-```bash
-# open mission 3/index.html directly in browser
-```
-
-Mission 4
+Backend:
 
 ```bash
 cd "mission 4/backend"
 npm install
-# create .env and add Gemini variables
 npm run dev
 ```
+
+Frontend (new terminal):
 
 ```bash
 cd "mission 4/frontend"
@@ -176,7 +195,15 @@ npm install
 npm run dev
 ```
 
-Mission 5
+Create mission 4/backend/.env with required variables before generating cover letters:
+
+- GEMINI_API_KEY
+- GEMINI_MODEL (optional, defaults recommended)
+- GEMINI_FALLBACK_MODEL (optional)
+- CLIENT_ORIGIN (optional)
+- MONGODB_URI (optional)
+
+### 7. Run Mission 5
 
 ```bash
 cd Mission-5
@@ -184,7 +211,7 @@ npm install
 npm run dev
 ```
 
-Mission 6 (ShopZone)
+### 8. Run Mission 6
 
 ```bash
 cd mission-6/ShopZone
@@ -192,33 +219,20 @@ npm install
 npm run dev
 ```
 
-Open: http://localhost:5173
-
-### 4) Mission 6 production build and preview
+Optional production checks for Mission 6:
 
 ```bash
-cd mission-6/ShopZone
+npm run lint
 npm run build
 npm run preview
 ```
 
-### 5) Mission 6 lint
+## Deployment Notes
 
-```bash
-cd mission-6/ShopZone
-npm run lint
-```
+- Mission 1, 2, 3, 5, and 6 have active Vercel deployments.
+- Mission 6 includes SPA rewrites via mission-6/ShopZone/vercel.json to support direct route refreshes.
+- Mission 4 deployment link is not currently listed in this repository.
 
-## Mission 6 Deployment Notes
+## Author
 
-ShopZone is configured as a SPA for Vercel using rewrites in vercel.json so refreshing deep routes (for example /product/1 or /checkout) does not return 404.
-
-## Top-Level Repository Structure
-
-- mission 1 -> Landing page
-- mission 2 -> Cash flow dashboard
-- mission 3 -> GitHub user search
-- mission 4 -> AI cover letter generator (frontend + backend)
-- Mission-5 -> Task board app
-- mission-6/ShopZone -> E-commerce frontend app
-- scripts -> Utility scripts
+Charan Nayak
