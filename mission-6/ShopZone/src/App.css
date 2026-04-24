@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+:root {
+	--sz-ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+	--sz-ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+	--sz-ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--sz-fast: 140ms;
+	--sz-base: 240ms;
+	--sz-slow: 520ms;
+	--sz-canvas-warm: oklch(98% 0.01 80);
+	--sz-canvas-cool: oklch(97% 0.01 240);
+	--sz-accent-amber: oklch(72% 0.16 72);
+	--sz-accent-blue: oklch(64% 0.12 245);
+	--sz-space-tight: clamp(0.5rem, 0.8vw, 0.75rem);
+	--sz-space-block: clamp(1rem, 1.2vw, 1.5rem);
+	--sz-space-section: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.surface-warm {
+	background-color: color-mix(in oklch, var(--sz-canvas-warm) 88%, white);
+}
+
+.surface-cool {
+	background-color: color-mix(in oklch, var(--sz-canvas-cool) 85%, white);
+}
+
+.page-atmosphere {
+	background: radial-gradient(
+		130% 90% at 12% 8%,
+		oklch(95% 0.03 78 / 0.45) 0%,
+		transparent 46%
+	),
+	linear-gradient(
+		170deg,
+		oklch(99% 0.01 80) 0%,
+		oklch(99% 0.01 240) 100%
+	);
+}
+
+.layout-section-gap {
+	margin-bottom: var(--sz-space-section);
+}
+
+.layout-stack-tight {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sz-space-tight);
+}
+
+.layout-stack-block {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sz-space-block);
+}
+
+@keyframes szFadeUp {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 14px, 0);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes szCardEnter {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 12px, 0) scale(0.985);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+}
+
+@keyframes szSuccessPulse {
+	0% {
+		transform: scale(1);
+		box-shadow: 0 0 0 0 rgb(245 158 11 / 0.32);
+	}
+
+	50% {
+		transform: scale(1.02);
+		box-shadow: 0 0 0 10px rgb(245 158 11 / 0);
+	}
+
+	100% {
+		transform: scale(1);
+		box-shadow: 0 0 0 0 rgb(245 158 11 / 0);
+	}
+}
+
+@keyframes szFadeInSoft {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.motion-fade-up {
+	opacity: 0;
+	animation: szFadeUp var(--sz-slow) var(--sz-ease-out-expo) forwards;
+}
+
+.motion-card-enter {
+	opacity: 0;
+	will-change: transform, opacity;
+	animation: szCardEnter var(--sz-slow) var(--sz-ease-out-quint) forwards;
+}
+
+.motion-image-fade {
+	animation: szFadeInSoft 300ms var(--sz-ease-out-quint);
+}
+
+.motion-surface {
+	transition: transform var(--sz-base) var(--sz-ease-out-quart),
+		box-shadow var(--sz-base) var(--sz-ease-out-quart),
+		border-color var(--sz-base) var(--sz-ease-out-quart);
+}
+
+.motion-surface:hover {
+	transform: translate3d(0, -3px, 0);
+}
+
+.motion-press {
+	transition: transform var(--sz-fast) var(--sz-ease-out-quint);
+}
+
+.motion-press:active {
+	transform: scale(0.97);
+}
+
+.motion-success {
+	animation: szSuccessPulse 380ms var(--sz-ease-out-quint);
+}
+
+.motion-dropdown-enter {
+	transform-origin: top right;
+	animation: szFadeUp 260ms var(--sz-ease-out-quint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.motion-fade-up,
+	.motion-card-enter {
+		opacity: 1;
+		transform: none;
+	}
+}

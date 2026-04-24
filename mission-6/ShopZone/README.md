@@ -82,3 +82,14 @@ npm run preview
 
 - Checkout access is guarded by `ProtectedRoute`.
 - Global app state is managed through `AppContext`.
+
+## Deploying to Vercel
+
+To deploy this React + Vite SPA on Vercel without route 404 issues:
+
+1. Set the Vercel project root directory to `ShopZone`.
+2. Keep the default build command as `npm run build`.
+3. Keep the output directory as `dist`.
+4. Ensure `vercel.json` exists with SPA rewrite rules.
+
+This project includes `vercel.json` so client routes like `/product/:id` and `/checkout` work on refresh and direct URL access.
