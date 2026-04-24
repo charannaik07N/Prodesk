@@ -8,170 +8,217 @@
 
 ## Repository Overview
 
-This repository contains internship assignments completed as part of frontend development tasks at Prodesk IT.
+This repository contains internship missions completed at Prodesk IT. Each mission focuses on a different frontend or full-stack capability, from responsive UI and API integration to authentication-style flows and protected routes.
 
-## Mission 1 - Prodesk Landing Page
+## Missions Summary
 
-Mission 1 focuses on building a responsive and performance-friendly landing page using HTML and Tailwind CSS.
+### Mission 1 - Prodesk Landing Page
 
-### Highlights
+- Focus: responsive landing page using Tailwind build pipeline.
+- Stack: HTML5, Tailwind CSS, Node.js.
+- Demo: https://prodesk-dsag.vercel.app/
 
-- Responsive landing page layout
-- Tailwind CSS setup through npm build workflow
-- Dark mode fixes and UI refinements
-- Navigation behavior improvements
+### Mission 2 - Cash Flow Dashboard
 
-### Tech Stack
+- Focus: personal finance tracking with analytics and export.
+- Stack: HTML5, JavaScript, Tailwind CSS, Chart.js, jsPDF.
+- Demo: https://prodesk-mission2.vercel.app/
 
-- HTML5
-- Tailwind CSS (npm build)
-- Node.js and npm
+### Mission 3 - Dev-Detective (GitHub User Search)
 
-### Mission 1 Live Demo
+- Focus: GitHub profile lookup and comparison mode.
+- Stack: HTML5, JavaScript, CSS3, GitHub REST API.
+- Demo: https://prodesk-fyr8.vercel.app/
 
-- https://prodesk-dsag.vercel.app/
+### Mission 4 - AI Cover Letter Generator
 
-## Mission 2 - Cash Flow Dashboard
+- Focus: full-stack AI app with resume parsing and letter generation.
+- Stack: React + Vite frontend, Express backend, Gemini API, optional MongoDB.
 
-Mission 2 is a finance dashboard to manage salary and expenses, convert currency between INR and USD, visualize spending, and export reports.
+### Mission 5 - Task Management Board
 
-### Highlights
+- Focus: drag-and-drop style board with task status columns and reusable UI components.
+- Stack: React + Vite.
 
-- Salary and expense tracking
-- Remaining balance calculation
-- INR and USD currency switching
-- Live exchange-rate handling with fallback support
-- Expense pie chart visualization
-- PDF report generation
-- localStorage data persistence
+### Mission 6 - ShopZone (E-Commerce Frontend)
 
-### Tech Stack
+- Focus: product listing, details, cart, login flow, and protected checkout.
+- Stack: React 19, React Router, Context API, Vite, Tailwind CSS, Lucide Icons.
+- Live Demo: https://shopzone-kappa.vercel.app/
 
-- HTML5
-- Vanilla JavaScript (ES6)
-- Tailwind CSS
-- Chart.js
-- jsPDF
+## Mission 6 Complete Project Explanation
 
-### Mission 2 Live Demo
+### Goal
 
-- https://prodesk-mission2.vercel.app/
+Mission 6 builds a modern e-commerce frontend called ShopZone where users can:
 
-## Mission 3 - Dev-Detective: GitHub User Search
+- Browse products fetched from DummyJSON API.
+- Filter products by category.
+- View complete product details with multiple images.
+- Add items to cart and update quantities.
+- Sign in (or continue as guest).
+- Access checkout through a protected route.
 
-Mission 3 is a GitHub user search project that lets you hunt and inspect GitHub profiles, display detailed user information, and includes a battle mode for comparing developers.
+### Core Architecture
 
-### Highlights
+- Routing layer in App.jsx using React Router.
+- Global state layer in context/AppContext.jsx.
+- UI split into reusable components under src/components.
+- Browser persistence via localStorage for user and cart data.
 
-- Fetches GitHub user data from the public API
-- Displays profile details: name, bio, followers, repository count, and links
-- Loading spinner during API requests
-- Error state handling for user not found
-- Battle mode logic for comparing users
-- Clean dashboard-style layout
+### Data and State Flow
 
-### Tech Stack
+1. Product list page fetches from https://dummyjson.com/products.
+2. Product details page fetches from https://dummyjson.com/products/:id.
+3. Cart actions are handled centrally through AppContext methods.
+4. Cart and user are persisted with localStorage keys:
+   - shopzone_user
+   - shopzone_cart
+5. Checkout route is guarded by ProtectedRoute and redirects unauthenticated users to login.
 
-- HTML5
-- Vanilla JavaScript (ES6)
-- CSS3
-- GitHub REST API
+### Main Routes
 
-### Mission 3 Live Demo
+- / -> Products page
+- /product/:id -> Product details page
+- /login -> Login/guest access page
+- /checkout -> Protected checkout page
 
-- https://prodesk-fyr8.vercel.app/
+### Mission 6 Feature Highlights
 
-## Mission 4 - AI Cover Letter Generator
+- Product grid with category filter and rating visualization.
+- Dedicated product detail screen with gallery and stock metadata.
+- Cart drawer in navbar with quantity controls.
+- Login simulation flow with guest mode.
+- Checkout form with summary, tax, shipping logic, and order confirmation state.
+- Responsive layout and animated interactions across pages.
 
-Mission 4 is a full-stack AI application that generates personalized cover letters from candidate/job inputs and an uploaded resume PDF.
+### Mission 6 Folder Structure
 
-### Highlights
+```text
+mission-6/
+   ShopZone/
+      public/
+      src/
+         components/
+            Checkout.jsx
+            Loginpage.jsx
+            Navbar.jsx
+            ProductDetails.jsx
+            Products.jsx
+            ProtectedRoute.jsx
+         context/
+            AppContext.jsx
+         App.jsx
+         App.css
+         index.css
+         main.jsx
+      index.html
+      package.json
+      vite.config.js
+      vercel.json
+```
 
-- React + Vite frontend with a clean multi-section UI
-- Express backend with secure Gemini API integration
-- PDF resume upload and text extraction on server side
-- Tone controls: formal, balanced, or creative
-- ATS mode toggle for keyword-optimized output
-- Generated letter actions: copy to clipboard and PDF export
-- Generation history endpoint with optional MongoDB persistence
-- Strong validation and error handling for API key, quota, model, and upload failures
+## Complete Setup Guide
 
-### How Mission 4 Works
+### Prerequisites
 
-1. User fills candidate/job/company details and uploads a PDF resume.
-2. Frontend sends a `multipart/form-data` request to the backend.
-3. Backend validates fields, file type/size, and parses resume text.
-4. Backend builds a structured prompt and calls Gemini.
-5. Generated letter is normalized and returned to frontend.
-6. If MongoDB is connected, generation metadata is saved in history.
+- Node.js 18+ (recommended latest LTS)
+- npm 9+
 
-### API Endpoints (Mission 4 Backend)
+### 1) Clone and open project
 
-- `GET /api/health`
-  Returns server health status.
-- `GET /api/history`
-  Returns latest generation history (empty if MongoDB is not connected).
-- `POST /api/cover-letter`
-  Accepts `multipart/form-data` with:
-  `candidateName`, `jobRole`, `companyName`, `keySkills`, `jobDescription`, `tone`, `atsMode`, and `resume` (PDF, max 5 MB).
+```bash
+git clone https://github.com/charannaik07N/Prodesk.git
+cd prodesk
+```
 
-### Environment Variables (Mission 4 Backend)
+### 2) Root setup (Mission 1 CSS build tooling)
 
-- `GEMINI_API_KEY` (required)
-- `GEMINI_MODEL` (default: `gemini-2.0-flash`)
-- `GEMINI_FALLBACK_MODEL` (default: `gemini-2.0-flash`)
-- `PORT` (default: `5000`)
-- `CLIENT_ORIGIN` (default: `http://localhost:5173`, comma-separated for multiple origins)
-- `MONGODB_URI` (optional, enables history persistence)
+```bash
+npm install
+npm run build:css
+```
 
-### Tech Stack
+### 3) Mission-wise local run
 
-- Frontend: React, Vite, Tailwind CSS
-- Backend: Node.js, Express, Multer, pdf-parse
-- AI: Google Gemini (`@google/generative-ai`)
-- Database (optional): MongoDB + Mongoose
+Mission 1
 
-### Local Run (Mission 4)
+```bash
+# from repository root
+npm run build:css
+# then open mission 1/index.html in browser
+```
 
-1. Start backend:
+Mission 2
 
-   ```bash
-   cd "mission 4/backend"
-   npm install
-   # create backend/.env and add required variables
-   npm run dev
-   ```
+```bash
+# open mission 2/index.html directly in browser
+```
 
-2. Start frontend in a new terminal:
+Mission 3
 
-   ```bash
-   cd "mission 4/frontend"
-   npm install
-   npm run dev
-   ```
+```bash
+# open mission 3/index.html directly in browser
+```
 
-3. Open app:
+Mission 4
 
-   `http://localhost:5173`
+```bash
+cd "mission 4/backend"
+npm install
+# create .env and add Gemini variables
+npm run dev
+```
 
-## Project Structure
+```bash
+cd "mission 4/frontend"
+npm install
+npm run dev
+```
 
-- mission 1: Landing page project files
-- mission 2: Cash Flow Dashboard files
-- mission 3: GitHub user search app files
-- mission 4: AI cover letter generator (frontend + backend)
-- scripts: utility/build scripts
+Mission 5
 
-## Run Locally
+```bash
+cd Mission-5
+npm install
+npm run dev
+```
 
-1. Install dependencies:
+Mission 6 (ShopZone)
 
-   npm install
+```bash
+cd mission-6/ShopZone
+npm install
+npm run dev
+```
 
-2. Build CSS for Mission 1:
+Open: http://localhost:5173
 
-   npm run build:css
+### 4) Mission 6 production build and preview
 
-3. Open mission 1/index.html or mission 2/index.html in your browser.
+```bash
+cd mission-6/ShopZone
+npm run build
+npm run preview
+```
 
-4. For Mission 4, follow the run steps under "Local Run (Mission 4)".
+### 5) Mission 6 lint
+
+```bash
+cd mission-6/ShopZone
+npm run lint
+```
+
+## Mission 6 Deployment Notes
+
+ShopZone is configured as a SPA for Vercel using rewrites in vercel.json so refreshing deep routes (for example /product/1 or /checkout) does not return 404.
+
+## Top-Level Repository Structure
+
+- mission 1 -> Landing page
+- mission 2 -> Cash flow dashboard
+- mission 3 -> GitHub user search
+- mission 4 -> AI cover letter generator (frontend + backend)
+- Mission-5 -> Task board app
+- mission-6/ShopZone -> E-commerce frontend app
+- scripts -> Utility scripts
