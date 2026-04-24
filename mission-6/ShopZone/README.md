@@ -71,6 +71,10 @@ npm run build
 npm run preview
 ```
 
+## Live Demo
+
+- https://shopzone-kappa.vercel.app/
+
 ## Scripts
 
 - `npm run dev` - Start local dev server
