@@ -1,5 +1,7 @@
 # Mission-7 — Employee Registration Form
 
+**[🔗 Live Demo](https://registrationwizard-liart.vercel.app/)**
+
 A compact, production-oriented React form for employee account creation. This project demonstrates a modern front-end pattern using React, React Hook Form, and Zod for schema validation, combined with Tailwind CSS for styling and Vite for fast development.
 
 ## Key Goals
@@ -45,7 +47,7 @@ Start development server:
 npm run dev
 ```
 
-Open http://localhost:5173 (Vite default) in a browser.
+Open http://localhost:5174 in your browser.
 
 Build for production:
 
@@ -82,6 +84,4 @@ If you rename or move `Input.jsx`, update its import usage in `App.jsx` accordin
 - Consider adding server-side validation (mirror Zod schema) to harden security.
 - Add tests (unit + integration) to verify validation and UX flows.
 
-
 Last updated: April 29, 2026
-
