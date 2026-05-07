@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+	color-scheme: dark;
+	--bg: oklch(0.12 0.02 258);
+	--bg-elev: oklch(0.17 0.02 258);
+	--bg-soft: oklch(0.22 0.02 258);
+	--text: oklch(0.96 0.01 80);
+	--text-soft: oklch(0.73 0.02 80);
+	--accent: oklch(0.62 0.24 29);
+	--accent-strong: oklch(0.55 0.27 29);
+	--danger: oklch(0.62 0.23 28);
+	--gold: oklch(0.82 0.17 85);
+	--line: oklch(0.32 0.02 258);
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		color-scheme: light;
+		--bg: oklch(0.97 0.01 80);
+		--bg-elev: oklch(0.93 0.02 80);
+		--bg-soft: oklch(0.89 0.02 80);
+		--text: oklch(0.22 0.03 250);
+		--text-soft: oklch(0.45 0.03 250);
+		--accent: oklch(0.56 0.2 28);
+		--accent-strong: oklch(0.5 0.22 28);
+		--danger: oklch(0.52 0.2 28);
+		--gold: oklch(0.74 0.16 85);
+		--line: oklch(0.8 0.02 250);
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	font-family: "Manrope", "Segoe UI", sans-serif;
+	background: linear-gradient(
+		180deg,
+		color-mix(in oklch, var(--bg) 94%, black),
+		color-mix(in oklch, var(--bg) 70%, black)
+	);
+	color: var(--text);
+}
+
+#root {
+	min-height: 100vh;
+}
+
+a {
+	color: inherit;
+}
+
+@keyframes fade-slide {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes poster-rise {
+	from {
+		opacity: 0;
+		transform: translateY(14px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes skeleton-shimmer {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 100% 50%;
+	}
+}
+
+@keyframes mood-pop {
+	from {
+		opacity: 0;
+		transform: translateY(8px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
