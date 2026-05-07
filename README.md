@@ -10,18 +10,19 @@ Professional repository documentation for all internship missions completed at P
 
 ## Repository Overview
 
-This repository contains six mission-based projects. The work spans static responsive pages, dashboard-style JavaScript applications, API-driven UI, full-stack AI workflows, drag-and-drop state management, and a modern React e-commerce frontend.
+This repository contains seven mission-based projects. The work spans static responsive pages, dashboard-style JavaScript applications, API-driven UI, full-stack AI workflows, drag-and-drop state management, a modern React e-commerce frontend, and a polished employee registration form.
 
 ## Mission Index
 
-| Mission   | Project                   | Core Focus                                           | Stack                                                         | Live Link                            |
-| --------- | ------------------------- | ---------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------ |
-| Mission 1 | Prodesk Landing Page      | Responsive marketing landing page                    | HTML5, Tailwind CSS, Node.js                                  | https://prodesk-dsag.vercel.app/     |
-| Mission 2 | Cash Flow Dashboard       | Personal finance tracking and reporting              | HTML5, JavaScript, Tailwind CSS, Chart.js, jsPDF              | https://prodesk-mission2.vercel.app/ |
-| Mission 3 | Dev-Detective             | GitHub profile search and comparison logic           | HTML5, JavaScript, CSS3, GitHub REST API                      | https://prodesk-fyr8.vercel.app/     |
-| Mission 4 | AI Cover Letter Generator | Resume-aware AI cover letter generation              | React, Vite, Node.js, Express, Gemini API, MongoDB (optional) | Not deployed in this repository      |
-| Mission 5 | Task Board                | Kanban-style task workflow with drag-and-drop        | React, Vite, Tailwind CSS, dnd-kit                            | https://mission5.vercel.app/         |
-| Mission 6 | ShopZone                  | E-commerce browsing, cart, login, protected checkout | React 19, React Router, Context API, Vite, Tailwind CSS       | https://shopzone-kappa.vercel.app/   |
+| Mission   | Project                    | Core Focus                                           | Stack                                                         | Live Link                                    |
+| --------- | -------------------------- | ---------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------- |
+| Mission 1 | Prodesk Landing Page       | Responsive marketing landing page                    | HTML5, Tailwind CSS, Node.js                                  | https://prodesk-dsag.vercel.app/             |
+| Mission 2 | Cash Flow Dashboard        | Personal finance tracking and reporting              | HTML5, JavaScript, Tailwind CSS, Chart.js, jsPDF              | https://prodesk-mission2.vercel.app/         |
+| Mission 3 | Dev-Detective              | GitHub profile search and comparison logic           | HTML5, JavaScript, CSS3, GitHub REST API                      | https://prodesk-fyr8.vercel.app/             |
+| Mission 4 | AI Cover Letter Generator  | Resume-aware AI cover letter generation              | React, Vite, Node.js, Express, Gemini API, MongoDB (optional) | Not deployed in this repository              |
+| Mission 5 | Task Board                 | Kanban-style task workflow with drag-and-drop        | React, Vite, Tailwind CSS, dnd-kit                            | https://mission5.vercel.app/                 |
+| Mission 6 | ShopZone                   | E-commerce browsing, cart, login, protected checkout | React 19, React Router, Context API, Vite, Tailwind CSS       | https://shopzone-kappa.vercel.app/           |
+| Mission 7 | Employee Registration Form | Accessible employee signup form with schema checks   | React, Vite, Tailwind CSS, React Hook Form, Zod               | https://registrationwizard-liart.vercel.app/ |
 
 ## Detailed Project Documentation
 
@@ -122,6 +123,21 @@ Directory: mission-6/ShopZone
 
 Live: https://shopzone-kappa.vercel.app/
 
+### Mission 7 - Employee Registration Form
+
+Mission 7 is a focused employee registration experience built with React, React Hook Form, and Zod for strong client-side validation.
+
+Key features:
+
+- Schema-driven validation with password confirmation checks.
+- Live password rule feedback.
+- Show and hide password controls.
+- Responsive, minimal UI for a fast signup flow.
+
+Directory: mission-7
+
+Live: https://registrationwizard-liart.vercel.app/
+
 ## Repository Structure
 
 ```text
@@ -135,6 +151,7 @@ prodesk/
   Mission-5/
   mission-6/
     ShopZone/
+  mission-7/
   scripts/
 ```
 
@@ -229,7 +246,8 @@ npm run preview
 
 ## Deployment Notes
 
-- Mission 1, 2, 3, 5, and 6 have active Vercel deployments.
+- Mission 1, 2, 3, 5, 6, and 7 have active Vercel deployments.
+- Mission 7 live link: https://registrationwizard-liart.vercel.app/.
 - Mission 6 includes SPA rewrites via mission-6/ShopZone/vercel.json to support direct route refreshes.
 - Mission 4 deployment link is not currently listed in this repository.
 
