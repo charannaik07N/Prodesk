@@ -23,7 +23,7 @@ This repository contains seven mission-based projects. The work spans static res
 | Mission 5 | Task Board                 | Kanban-style task workflow with drag-and-drop        | React, Vite, Tailwind CSS, dnd-kit                            | https://mission5.vercel.app/                                         |
 | Mission 6 | ShopZone                   | E-commerce browsing, cart, login, protected checkout | React 19, React Router, Context API, Vite, Tailwind CSS       | https://shopzone-kappa.vercel.app/                                   |
 | Mission 7 | Employee Registration Form | Accessible employee signup form with schema checks   | React, Vite, Tailwind CSS, React Hook Form, Zod               | https://registrationwizard-liart.vercel.app/                         |
-| Level 3   | Cine-Stream                | Movie discovery with AI mood matching                | React, Vite, TMDB, Groq                                       | https://cine-stream-d0abymo3j-charan-s-projects-647ac572.vercel.app/ |
+| Mission 8   | Cine-Stream                | Movie discovery with AI mood matching                | React, Vite, TMDB, Groq                                       | https://cine-stream-d0abymo3j-charan-s-projects-647ac572.vercel.app/ |
 
 ## Detailed Project Documentation
 
