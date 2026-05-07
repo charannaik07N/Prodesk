@@ -99,6 +99,8 @@ npm run dev:api
 
 ## Vercel Deployment
 
+Live URL: https://cine-stream-d0abymo3j-charan-s-projects-647ac572.vercel.app/
+
 1. Import the repo into Vercel.
 2. Framework preset: Vite (build command `npm run build`, output `dist`).
 3. Add environment variables in Vercel:
