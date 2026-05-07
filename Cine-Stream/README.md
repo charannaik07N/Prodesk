@@ -30,12 +30,14 @@ npm run dev
 Required:
 
 - `VITE_TMDB_API_KEY`
-- `VITE_GROQ_API_KEY`
+- `VITE_GROQ_API_KEY` (local dev)
+- `GROQ_API_KEY` (Vercel API)
 
 Optional:
 
 - `VITE_TMDB_READ_ACCESS_TOKEN`
 - `VITE_GROQ_MODEL`
+- `GROQ_MODEL`
 
 ## Folder Structure
 
@@ -94,6 +96,17 @@ For Mood Matcher (Groq), also run:
 ```bash
 npm run dev:api
 ```
+
+## Vercel Deployment
+
+1. Import the repo into Vercel.
+2. Framework preset: Vite (build command `npm run build`, output `dist`).
+3. Add environment variables in Vercel:
+   - `VITE_TMDB_API_KEY`
+   - `VITE_TMDB_READ_ACCESS_TOKEN` (optional)
+   - `GROQ_API_KEY`
+   - `GROQ_MODEL` (optional)
+4. Deploy. The Groq API runs as a serverless function at `/api/groq` from `api/groq.js`.
 
 ### App Flow
 
