@@ -14,15 +14,16 @@ This repository contains seven mission-based projects. The work spans static res
 
 ## Mission Index
 
-| Mission   | Project                    | Core Focus                                           | Stack                                                         | Live Link                                    |
-| --------- | -------------------------- | ---------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------- |
-| Mission 1 | Prodesk Landing Page       | Responsive marketing landing page                    | HTML5, Tailwind CSS, Node.js                                  | https://prodesk-dsag.vercel.app/             |
-| Mission 2 | Cash Flow Dashboard        | Personal finance tracking and reporting              | HTML5, JavaScript, Tailwind CSS, Chart.js, jsPDF              | https://prodesk-mission2.vercel.app/         |
-| Mission 3 | Dev-Detective              | GitHub profile search and comparison logic           | HTML5, JavaScript, CSS3, GitHub REST API                      | https://prodesk-fyr8.vercel.app/             |
-| Mission 4 | AI Cover Letter Generator  | Resume-aware AI cover letter generation              | React, Vite, Node.js, Express, Gemini API, MongoDB (optional) | Not deployed in this repository              |
-| Mission 5 | Task Board                 | Kanban-style task workflow with drag-and-drop        | React, Vite, Tailwind CSS, dnd-kit                            | https://mission5.vercel.app/                 |
-| Mission 6 | ShopZone                   | E-commerce browsing, cart, login, protected checkout | React 19, React Router, Context API, Vite, Tailwind CSS       | https://shopzone-kappa.vercel.app/           |
-| Mission 7 | Employee Registration Form | Accessible employee signup form with schema checks   | React, Vite, Tailwind CSS, React Hook Form, Zod               | https://registrationwizard-liart.vercel.app/ |
+| Mission   | Project                    | Core Focus                                           | Stack                                                         | Live Link                                                            |
+| --------- | -------------------------- | ---------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Mission 1 | Prodesk Landing Page       | Responsive marketing landing page                    | HTML5, Tailwind CSS, Node.js                                  | https://prodesk-dsag.vercel.app/                                     |
+| Mission 2 | Cash Flow Dashboard        | Personal finance tracking and reporting              | HTML5, JavaScript, Tailwind CSS, Chart.js, jsPDF              | https://prodesk-mission2.vercel.app/                                 |
+| Mission 3 | Dev-Detective              | GitHub profile search and comparison logic           | HTML5, JavaScript, CSS3, GitHub REST API                      | https://prodesk-fyr8.vercel.app/                                     |
+| Mission 4 | AI Cover Letter Generator  | Resume-aware AI cover letter generation              | React, Vite, Node.js, Express, Gemini API, MongoDB (optional) | Not deployed in this repository                                      |
+| Mission 5 | Task Board                 | Kanban-style task workflow with drag-and-drop        | React, Vite, Tailwind CSS, dnd-kit                            | https://mission5.vercel.app/                                         |
+| Mission 6 | ShopZone                   | E-commerce browsing, cart, login, protected checkout | React 19, React Router, Context API, Vite, Tailwind CSS       | https://shopzone-kappa.vercel.app/                                   |
+| Mission 7 | Employee Registration Form | Accessible employee signup form with schema checks   | React, Vite, Tailwind CSS, React Hook Form, Zod               | https://registrationwizard-liart.vercel.app/                         |
+| Level 3   | Cine-Stream                | Movie discovery with AI mood matching                | React, Vite, TMDB, Groq                                       | https://cine-stream-d0abymo3j-charan-s-projects-647ac572.vercel.app/ |
 
 ## Detailed Project Documentation
 
@@ -138,6 +139,21 @@ Directory: mission-7
 
 Live: https://registrationwizard-liart.vercel.app/
 
+### Cine-Stream (Level 3)
+
+Cine-Stream is a movie discovery app powered by TMDB with an AI mood-based picker.
+
+Key features:
+
+- Popular movies grid with infinite scroll.
+- Debounced search flow.
+- Favorites with LocalStorage persistence.
+- AI Mood Matcher using Groq.
+
+Directory: Cine-Stream
+
+Live: https://cine-stream-d0abymo3j-charan-s-projects-647ac572.vercel.app/
+
 ## Repository Structure
 
 ```text
@@ -246,7 +262,7 @@ npm run preview
 
 ## Deployment Notes
 
-- Mission 1, 2, 3, 5, 6, and 7 have active Vercel deployments.
+- Mission 1, 2, 3, 5, 6, 7, and Cine-Stream have active Vercel deployments.
 - Mission 7 live link: https://registrationwizard-liart.vercel.app/.
 - Mission 6 includes SPA rewrites via mission-6/ShopZone/vercel.json to support direct route refreshes.
 - Mission 4 deployment link is not currently listed in this repository.
